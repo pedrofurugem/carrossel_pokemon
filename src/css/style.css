@@ -154,3 +154,7 @@ z-index: -1 (o elemento vai pra trás, desce uma camada)
     max-height: 115px;
     overflow-y: auto; /*adicionar um scroll para muito texto*/
 }
+
+.opacidade {
+    opacity: 0.5;
+}

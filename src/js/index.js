@@ -33,43 +33,45 @@ function mostrarCartao(indiceCartao){
     cartoes[indiceCartao].classList.add("selecionado")
 }
 
+function addOpacidade(){
+    const primeiraImagem = cartaoAtual === 0;
+    if(primeiraImagem){
+        setaVoltar.classList.add('opacidade')
+    }else{
+        setaVoltar.classList.remove('opacidade')
+    }
+
+    const ultimaImagem = cartaoAtual !== 0 && cartaoAtual === cartoes.length - 1;
+    if(ultimaImagem){
+        setaAvancar.classList.add('opacidade')
+    }
+    else{
+        setaAvancar.classList.remove('opacidade')
+    }
+}
+
 //passo 2 - dar um jeito de indentificar o clique do usuário na seta avançar
 setaAvancar.addEventListener('click', function() {
     //verificação e teste
     //console.log("cartão atual: ", cartaoAtual)
     //console.log("cartões ", cartoes.length - 1)
     if(cartaoAtual === cartoes.length - 1) return;
-    
-    //passo 3 - fazer aparecer o proximo cartão da lista
-    //passo 4 - buscar o cartão que esta selecionado e esconder
-    /*const cartaoSelecionado = document.querySelector(".selecionado")
-    cartaoSelecionado.classList.remove('selecionado')*/
 
-    esconderCartaoSelecionado();
-    
     cartaoAtual++;
+    esconderCartaoSelecionado();
     mostrarCartao(cartaoAtual)
+    addOpacidade()
 })
 
-/*OBJETIVO 2 - quando clicarmos na seta de voltar temos que
-mostrar o cartão anterior da lista
-    - passo 1 - dar um jeito de pegar o elemento HTML da seta
-    voltar
-    - passo 2 - dar um jeito de indentificar o clique do usuário na seta voltar
-    - passo 3 - fazer aparecer cartão anterior da lista
-    - passo 4 - buscar o cartão que esta selecionado e esconder
-*/
+
 setaVoltar.addEventListener('click', function() {
-    //verificação
+    
     if(cartaoAtual === 0) return;
 
-    /*const cartaoSelecionado = document.querySelector(".selecionado")
-    cartaoSelecionado.classList.remove('selecionado') */
-    esconderCartaoSelecionado();
-
     cartaoAtual--;
-    console.log(cartaoAtual)
-    cartoes[cartaoAtual].classList.add("selecionado")
+    esconderCartaoSelecionado();
+    mostrarCartao(cartaoAtual)
+    addOpacidade()
 })
 
 /* JS
